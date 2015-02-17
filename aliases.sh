@@ -92,7 +92,7 @@ alias wget="wget -c"  # -c will allow for continuable downloads
 #####
 
 ##### Git #####
-alias comall="git commit -am" #trigger git commit all command.
+alias gitall="git commit -am" #trigger git commit all command.
 #####
 
 ##### Development Folder control #####
