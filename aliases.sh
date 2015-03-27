@@ -113,6 +113,12 @@ mcd () {
   cd $1
 }
 
+sshme(){
+  grep -A 4 $1 ~/.ssh/config
+}
+
+
+
 alias mkdir="mkdir -pv" # recursive mkdir
 alias op="nautilus ./"  # open current directory in nautilus
 alias ophome="nautilus ~/"  # open home in nautilus
@@ -124,4 +130,11 @@ alias nautdev="nautilus ~/Development/Lift"
 
 ##### Django Dev #####
 alias run="python manage.py runserver" # run local django server
+alias runp="python manage.py runserver_plus" # run location django plus server
 #####
+
+alias editalias="subl ~/Development/bash_aliases/aliases.sh"
+
+alias fig="docker-compose"
+
+alias purgepyc="find . -name '*.pyc' -print0 | xargs -0 rm;"
