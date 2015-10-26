@@ -77,6 +77,41 @@ imp() {
     fi
 }
 
+urlmap(){
+    cyan='\e[1;36m'
+    NC='\e[0m'
+    red='\e[0;31m'
+    echo ""
+    echo "Searching for ${cyan}$1${NC}"
+    python -c 'import sys; print sys.real_prefix' 2>/dev/null && INVENV=1 || INVENV=0
+    if [ $INVENV -eq 1 ]
+    then
+        # cdproject > /dev/null
+        cd '/home/thebarkman/Development/Lift/introjunction/website/introjunction/apps/circles' > /dev/null
+        echo ""
+        grep -o "(?<=url)([^\n\r]*)name='([^\n\r]*)'" | while read -r line ; do
+        echo $line
+        # line=${line//.py*}
+        # line="from "${line//\//.}" import $1"
+
+        # echo $line
+        done
+        cd - > /dev/null
+        # echo ""
+  # grep -r "def "$1 | while read -r line ; do
+  #       line=${line//.py*}
+  #       line="from "${line//\//.}" import $1"
+
+  #       echo $line
+  #       done
+  #       cd - > /dev/null
+
+    else
+        echo ""
+        echo "${red}no virtual env detected${NC}"
+    fi
+}
+
 ##### DEV OPS #####
 alias ps="ps auxf" # process listing table
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e" # searchable process listing table ($ psg postgres)
@@ -137,4 +172,8 @@ alias editalias="subl ~/Development/bash_aliases/aliases.sh"
 
 alias fig="docker-compose"
 
-alias purgepyc="find . -name '*.pyc' -print0 | xargs -0 rm;"
+alias bah=fuck
+
+alias rmpyc='find . -type f -name "*.pyc" -print -delete'
+#export PYTHONDONTWRITEBYTECODE=true # remove this if deploying aliases on production
+
