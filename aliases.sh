@@ -157,17 +157,17 @@ sshme(){
 alias mkdir="mkdir -pv" # recursive mkdir
 alias op="nautilus ./"  # open current directory in nautilus
 alias ophome="nautilus ~/"  # open home in nautilus
-alias cddev="cd ~/development/" # goto my local dev folder
-alias nautdev="nautilus ~/development/"
-alias cdlift="cd ~/development/lift/"
+alias cddev="cd /mnt/c/Users/Scott/Documents/Development/" # goto my local dev folder
+alias nautdev="nautilus /mnt/c/Users/Scott/Documents/Development/"
+alias cdlift="cd /mnt/c/Users/Scott/Documents/Development/lift/"
 alias nautdev="nautilus ~/development/lift"
 #####
 
 ##### Django Dev #####
-alias run="python manage.py runserver 0.0.0.0:8000" # run local django server
-alias runp="python manage.py runserver_plus 0.0.0.0:8000" # run location django plus server
-alias drun="django-admin.py runserver 0.0.0.0:8000"
-alias drunp="django-admin.py runserver_plus 0.0.0.0:8000"
+alias run="python manage.py runserver 0.0.0.0:1337" # run local django server
+alias runp="python manage.py runserver_plus 0.0.0.0:1337" # run location django plus server
+alias drun="django-admin.py runserver 0.0.0.0:1337"
+alias drunp="django-admin.py runserver_plus 0.0.0.0:1337"
 #####
 
 alias editalias="subl ~/development/bash_aliases/aliases.sh"
