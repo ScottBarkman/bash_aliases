@@ -112,6 +112,15 @@ urlmap(){
     fi
 }
 
+
+ function stasher() {
+  if [[ -z $1 ]] # check if message was passed
+  then
+    echo You need to supply a message to stash these files
+  else
+    git stash save $1
+  fi
+}
 ##### DEV OPS #####
 alias ps="ps auxf" # process listing table
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e" # searchable process listing table ($ psg postgres)
@@ -124,6 +133,10 @@ alias du="du -ach | sort -h" # moar disk usage
 alias top="htop"  #better formatted top command
 alias histg="history | grep" # display recent history. (helpful to get history id: ie: removing an accidental password entry)
 alias wget="wget -c"  # -c will allow for continuable downloads
+
+
+# shortcut for postgres since we need to explicitly say localhost to connect to windows postgres instance
+alias psql="psql -h localhost"
 #####
 
 ##### Git #####
@@ -157,17 +170,21 @@ sshme(){
 alias mkdir="mkdir -pv" # recursive mkdir
 alias op="nautilus ./"  # open current directory in nautilus
 alias ophome="nautilus ~/"  # open home in nautilus
-alias cddev="cd /mnt/c/Users/Scott/Documents/Development/" # goto my local dev folder
-alias nautdev="nautilus /mnt/c/Users/Scott/Documents/Development/"
-alias cdlift="cd /mnt/c/Users/Scott/Documents/Development/lift/"
+alias cddev="cd /mnt/c/Users/Scott/Development/" # goto my local dev folder
+alias nautdev="nautilus /mnt/c/Users/Scott/Development/"
+alias cdlift="cd /mnt/c/Users/Scott/Development/lift/"
 alias nautdev="nautilus ~/development/lift"
 #####
 
+PORT="8000"
+
 ##### Django Dev #####
-alias run="python manage.py runserver 0.0.0.0:1337" # run local django server
-alias runp="python manage.py runserver_plus 0.0.0.0:1337" # run location django plus server
-alias drun="django-admin.py runserver 0.0.0.0:1337"
-alias drunp="django-admin.py runserver_plus 0.0.0.0:1337"
+alias run="python manage.py runserver 0.0.0.0:$PORT" # run local django server
+alias runp="python manage.py runserver_plus" # run location django plus server
+alias runp_external="python manage.py runserver_plus 0.0.0.0:$PORT"
+alias drun="django-admin.py runserver 0.0.0.0:$PORT"
+alias drunp="django-admin.py runserver_plus"
+alias drunp_external="django-admin.py runserver_plus 0.0.0.0:$PORT"
 #####
 
 alias editalias="subl ~/development/bash_aliases/aliases.sh"
@@ -178,4 +195,14 @@ alias bah=fuck
 
 alias rmpyc='find . -type f -name "*.pyc" -print -delete'
 #export PYTHONDONTWRITEBYTECODE=true # remove this if deploying aliases on production
+
+# https://github.com/moul/advanced-ssh-config#install
+# Advanced SSH
+#alias ssh="/mnt/c/Users/Scott/Development/go/bin/assh wrapper ssh"
+
+PYTHONDONTWRITEBYTECODE=true
+#for xserver apps on windows
+export DISPLAY=:0
+
+eval $( dircolors -b /mnt/c/Users/Scott/Development/LS_COLORS )
 
