@@ -179,10 +179,10 @@ alias nautdev="nautilus ~/development/lift"
 PORT="8000"
 
 ##### Django Dev #####
-alias run="python manage.py runserver 0.0.0.0:$PORT" # run local django server
+alias run="python manage.py runserver" # run local django server
 alias runp="python manage.py runserver_plus" # run location django plus server
 alias runp_external="python manage.py runserver_plus 0.0.0.0:$PORT"
-alias drun="django-admin.py runserver 0.0.0.0:$PORT"
+alias drun="django-admin.py runserver"
 alias drunp="django-admin.py runserver_plus"
 alias drunp_external="django-admin.py runserver_plus 0.0.0.0:$PORT"
 #####
